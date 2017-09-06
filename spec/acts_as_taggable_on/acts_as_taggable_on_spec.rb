@@ -282,4 +282,35 @@ describe 'Acts As Taggable On' do
     end
   end
 
+  describe '@@tag_class' do
+    context 'default' do
+      it 'should return ::ActsAsTaggableOn::Tag' do
+        expect(ActsAsTaggableOn.tag_class).to eq('::ActsAsTaggableOn::Tag')
+      end
+    end
+    context 'configured' do
+      before do
+        ActsAsTaggableOn.tag_class = 'AnotherClass'
+      end
+      it 'should return configured class name' do
+        expect(ActsAsTaggableOn.tag_class).to eq('AnotherClass')
+      end
+    end
+  end
+
+  describe '@@tagging_class' do
+    context 'default' do
+      it 'should return ::ActsAsTaggableOn::Tagging' do
+        expect(ActsAsTaggableOn.tagging_class).to eq('::ActsAsTaggableOn::Tagging')
+      end
+    end
+    context 'configured' do
+      before do
+        ActsAsTaggableOn.tagging_class = 'AnotherClass'
+      end
+      it 'should return configured class name' do
+        expect(ActsAsTaggableOn.tagging_class).to eq('AnotherClass')
+      end
+    end
+  end
 end
